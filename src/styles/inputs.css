@@ -1,0 +1,20 @@
+input {
+    padding: 5px 0;
+    border: 1px solid black;
+    outline: none;
+    width: 99%;
+}
+
+div span {
+    color: red;
+    font-size: 12px;
+    display: inline-block;
+}
+
+div label {
+    font-size: 14px;
+}
+
+div.invalid input {
+    border: 1px solid red;
+}
