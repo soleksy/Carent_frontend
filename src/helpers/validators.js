@@ -1,5 +1,13 @@
 const EMAIL_REGEX = /[A-Za-z0-9]\w*(\.\w+)*@[A-Za-z0-9]\w*(\.\w+)*[A-Za-z0-9]/;
 
+export const equalityValidator = (input, comparable) => {
+    let errorMessage = null;
+    if(input !== comparable) {
+        errorMessage = "Fields mismatch";
+    }
+    return createValidationResult(errorMessage);
+}
+
 export const nonEmptyValidator = (input) => {
     let errorMessage = null;
     if(!lengthValidator(input, 1, Number.MAX_VALUE).valid) {

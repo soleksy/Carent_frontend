@@ -32,3 +32,12 @@ div.form-container form input[type="submit"]:hover {
     cursor: pointer;
     background-color: deepskyblue;
 }
+
+div.form-container form input[disabled] {
+    background-color: #b3b3b3;
+}
+
+div.form-container form input[disabled]:hover {
+    cursor: default;
+    background-color: #b3b3b3;
+}
