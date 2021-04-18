@@ -1,33 +1,33 @@
-import * as React from "react";
 import Form from "./Form";
 import Field from "../input/Field";
-import RepeatField from "../input/RepeatField";
-import {emailValidator, equalityValidator, passwordValidator} from "../../helpers/validators";
+import {emailValidator, equalityValidator, passwordValidator} from "../../helpers/Validators";
 
-class SignUpForm extends Form {
-    constructor(props) {
-        super(props);
-        this.name = "Sign up";
-        this.inputs = [
-            <Field name="Email"
-                   type="field"
-                   validate={emailValidator}
-                   validationCallback={this.validationCallback}
-                   key={0}/>,
-            <Field name="Password"
-                   type="password"
-                   validate={passwordValidator}
-                   validationCallback={this.validationCallback}
-                   key={1}/>,
-            <RepeatField name="Repeat password"
-                         type="password"
-                         validate={equalityValidator}
-                         validationCallback={this.validationCallback}
-                         getDependentInputValue={() => this.getDependentInputValue("Password")}
-                         key={2}/>,
-        ];
-        this.prepareValidationMap();
-    }
+const SignUpForm = () => {
+    const name = "Sign up";
+    const inputs = [
+        {
+            component: Field,
+            name: "Email",
+            type: "field",
+            validate: emailValidator
+        },
+        {
+            component: Field,
+            name: "Password",
+            type: "password",
+            validate: passwordValidator
+        },
+        {
+            component: Field,
+            name: "Repeat Password",
+            type: "password",
+            dependsOn: "Password",
+            validate: equalityValidator
+        }
+    ];
+    return (
+        <Form name={name} inputs={inputs}/>
+    );
 }
 
 export default SignUpForm;

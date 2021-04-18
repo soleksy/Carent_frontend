@@ -1,18 +1,21 @@
-import SignUpForm from "./forms/SignUpForm";
-import SignInForm from "./forms/SignInForm";
-import * as React from "react";
+import {useReducer, createContext} from "react";
+import {Reducer} from "../reducers/Reducer";
+import Menu from "./Menu";
+import Modal from "./Modal";
 
-class App extends React.Component {
-    render() {
-        return (
-            <div className="App">
-                <SignUpForm/>
-                <br/>
-                <br/>
-                <SignInForm/>
-            </div>
-        );
-    }
+const initialState = {
+    modalContent: null
+};
+
+const App = () => {
+    const [state, dispatch] = useReducer(Reducer, initialState);
+    return (
+        <Context.Provider value={[state, dispatch]}>
+            <Menu/>
+            <Modal/>
+        </Context.Provider>
+    );
 }
 
+export const Context = createContext(initialState);
 export default App;

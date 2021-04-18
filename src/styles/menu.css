@@ -1,0 +1,59 @@
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    border-bottom: 2px solid dodgerblue;
+}
+
+li button {
+    border: none;
+    background-color: white;
+    border-top: 2px solid white;
+    cursor: pointer;
+    outline: none;
+    padding: 16.8px 16px;
+}
+
+li.sign-up {
+    float: right;
+}
+
+li.sign-up button {
+    color: white;
+    background-color: dodgerblue;
+    border-top: 2px solid dodgerblue;
+}
+
+li.sign-up button:hover {
+    color: white;
+    background-color: deepskyblue;
+    border-top: 2px solid deepskyblue;
+}
+
+li.sign-in {
+    float: right;
+}
+
+li {
+    float: left;
+}
+
+li.selected a,button {
+    color: deepskyblue;
+    border-top: 2px solid deepskyblue;
+}
+
+li a,button {
+    display: block;
+    color: dodgerblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-top: 2px solid white;
+}
+
+li a,button:hover {
+    color: dodgerblue;
+    border-top: 2px solid dodgerblue;
+}

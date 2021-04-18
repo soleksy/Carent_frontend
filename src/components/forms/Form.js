@@ -1,52 +1,56 @@
 import * as React from "react";
 import Submit from "../input/Submit";
+import {useRef, useState, createElement, useEffect} from "react";
 
-class Form extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            valid: false
-        };
-        this.prepareValidationMap = this.prepareValidationMap.bind(this);
-        this.validationCallback = this.validationCallback.bind(this);
-        this.getDependentInputValue = this.getDependentInputValue.bind(this);
-    }
-
-    prepareValidationMap() {
-        this.inputsMap = {};
-        this.inputs.forEach(input => this.inputsMap[input.props.name] = {
+const Form = (props) => {
+    const inputsMap = useRef([]).current;
+    const [state, setState] = useState({
+        valid: false
+    });
+    useEffect(() => {
+        props.inputs.forEach(input => inputsMap[input.name] = {
             value: '',
             valid: false
         });
-    }
+    }, [props.inputs, inputsMap]);
 
-    validationCallback(name, value, valid) {
-        this.inputsMap[name] = {
+    const validationCallback = (name, value, valid) => {
+        inputsMap[name] = {
             value: value,
             valid: valid
         };
-
-        const formValid = !Object.values(this.inputsMap).some(input => !input.valid);
-        this.setState({
+        const formValid = !Object.values(inputsMap).some(input => !input.valid);
+        setState({
             valid: formValid
         });
     };
 
-    getDependentInputValue(dependentName) {
-        return this.inputsMap[dependentName].value;
-    }
+    const getValueOfDependentInput = (dependentName) => {
+        return inputsMap[dependentName].value;
+    };
 
-    render() {
-        return (
-            <div className="form-container">
-                <div className="form-header">{this.name}</div>
-                <form>
-                    {this.inputs}
-                    <Submit valid={this.state.valid}/>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className="form-container">
+            <div className="form-header">{props.name}</div>
+            <form>
+                {props.inputs.map((input, key) => {
+                        let additionalProps = {
+                            validationCallback: validationCallback,
+                            key: key,
+                        };
+                        if(input.dependsOn !== undefined) {
+                            additionalProps["getValueOfDependentInput"] = () => getValueOfDependentInput(input.dependsOn);
+                        }
+                        return createElement(
+                            input.component,
+                            {...input, ...additionalProps}
+                        )
+                    }
+                )}
+                <Submit valid={state.valid}/>
+            </form>
+        </div>
+    );
 }
 
 export default Form;

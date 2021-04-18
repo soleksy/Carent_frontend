@@ -1,44 +1,42 @@
-import * as React from "react";
+import {useState} from "react";
 
-class Field extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: "",
-            className: "valid",
-            errorMessage: ""
-        };
-        this.valueChangeHandler = this.valueChangeHandler.bind(this);
-    }
+const Field = (props) => {
+    const [state, setState] = useState({
+        value: "",
+        className: "valid",
+        valid: false
+    });
 
-    validateInput(inputValue) {
-        return this.props.validate(inputValue);
-    }
-
-    valueChangeHandler(event) {
+    const valueChangeHandler = (event) => {
         const inputValue = event.target.value;
-        const validationResult = this.validateInput(inputValue);
-        this.setState({
+        let validationResult;
+        if (props.getValueOfDependentInput !== undefined) {
+            validationResult = props.validate(inputValue, props.getValueOfDependentInput());
+        } else {
+            validationResult = props.validate(inputValue);
+        }
+        setState({
             value: inputValue,
             className: validationResult.valid ? "valid" : "invalid",
             errorMessage: validationResult.errorMessage
         });
-        if(this.props.validationCallback !== undefined) {
-            this.props.validationCallback(this.props.name, inputValue, validationResult.valid);
+        if (props.validationCallback !== undefined) {
+            props.validationCallback(props.name, inputValue, validationResult.valid);
         }
     };
 
-    render() {
-        return (
-            <div className={this.state.className}>
-                <label htmlFor={this.props.name}>{this.props.name}:</label>
-                <br/>
-                <input name={this.props.name} type={this.props.type} onChange={this.valueChangeHandler} value={this.state.value}/>
-                <br/>
-                <span>{this.props.errorMessage || this.state.errorMessage}</span>
-            </div>
-        );
-    }
+    return (
+        <div className={state.className}>
+            <label htmlFor={props.name}>{props.name}:</label>
+            <br/>
+            <input name={props.name}
+                   type={props.type}
+                   onChange={valueChangeHandler}
+                   value={state.value}/>
+            <br/>
+            <span>{state.errorMessage}</span>
+        </div>
+    );
 }
 
 export default Field;
