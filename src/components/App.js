@@ -2,9 +2,12 @@ import {useReducer, createContext} from "react";
 import {Reducer} from "../reducers/Reducer";
 import Menu from "./Menu";
 import Modal from "./Modal";
+import Loader from "./Loader";
 
 const initialState = {
-    modalContent: null
+    modalContent: null,
+    modalErrorMessage: null,
+    renderLoader: false
 };
 
 const App = () => {
@@ -13,6 +16,7 @@ const App = () => {
         <Context.Provider value={[state, dispatch]}>
             <Menu/>
             <Modal/>
+            <Loader/>
         </Context.Provider>
     );
 }

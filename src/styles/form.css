@@ -1,6 +1,5 @@
 div.form-container {
     min-width: 350px;
-    #border: 1px solid dodgerblue;
     background-color: white;
 }
 
@@ -14,7 +13,7 @@ div.form-container .form-header {
 }
 
 div.form-container form {
-    padding: 15px 15px;
+    padding: 15px 0;
 }
 
 div.form-container form input[type="submit"] {

@@ -1,4 +1,4 @@
-const EMAIL_REGEX = /[A-Za-z0-9]\w*(\.\w+)*@[A-Za-z0-9]\w*(\.\w+)*[A-Za-z0-9]/;
+const EMAIL_REGEX = /.*/ // /[A-Za-z0-9]\w*(\.\w+)*@[A-Za-z0-9]\w*(\.\w+)*[A-Za-z0-9]/;
 
 export const equalityValidator = (input, comparable) => {
     let errorMessage = null;
@@ -30,7 +30,7 @@ export const emailValidator = (input) => {
 
 export const passwordValidator = (input) => {
     let errorMessage = null;
-    let lengthValidationResult = lengthValidator(input, 8, 20);
+    let lengthValidationResult = lengthValidator(input, 4, 20);
     if(!lengthValidationResult.valid) {
         errorMessage = lengthValidationResult.errorMessage;
     }

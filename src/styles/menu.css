@@ -12,11 +12,27 @@ li button {
     border-top: 2px solid white;
     cursor: pointer;
     outline: none;
-    padding: 16.8px 16px;
+    padding: 18px 16px;
 }
 
-li.sign-up {
+li.auth {
     float: right;
+}
+
+li.auth p {
+    margin-right: 10px;
+}
+
+li.auth p button {
+    color: dodgerblue;
+    text-decoration: none;
+    display: inline;
+    padding: 0;
+}
+
+li.auth p button:hover {
+    color: deepskyblue;
+    border-top: 2px solid white;
 }
 
 li.sign-up button {
@@ -29,10 +45,6 @@ li.sign-up button:hover {
     color: white;
     background-color: deepskyblue;
     border-top: 2px solid deepskyblue;
-}
-
-li.sign-in {
-    float: right;
 }
 
 li {
@@ -48,7 +60,7 @@ li a,button {
     display: block;
     color: dodgerblue;
     text-align: center;
-    padding: 14px 16px;
+    padding: 15px 16px;
     text-decoration: none;
     border-top: 2px solid white;
 }

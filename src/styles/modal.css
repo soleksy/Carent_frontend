@@ -13,14 +13,18 @@
 .modal-content {
     position: relative;
     margin: 80px auto;
-    width: 30%;
+    width: 25%;
     min-width: 350px;
-    padding: 50px;
+    padding: 25px 50px;
     background-color: white;
 }
 
-.modal.hidden {
-    display: none;
+.modal-error {
+    display: block;
+    padding: 10px;
+    color: red;
+    background-color: #ffd1dd;
+    border: 2px solid red;
 }
 
 .modal-close {

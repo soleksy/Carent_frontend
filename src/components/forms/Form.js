@@ -1,4 +1,3 @@
-import * as React from "react";
 import Submit from "../input/Submit";
 import {useRef, useState, createElement, useEffect} from "react";
 
@@ -9,10 +8,10 @@ const Form = (props) => {
     });
     useEffect(() => {
         props.inputs.forEach(input => inputsMap[input.name] = {
-            value: '',
+            value: "",
             valid: false
         });
-    }, [props.inputs, inputsMap]);
+    }, []);
 
     const validationCallback = (name, value, valid) => {
         inputsMap[name] = {
@@ -32,7 +31,7 @@ const Form = (props) => {
     return (
         <div className="form-container">
             <div className="form-header">{props.name}</div>
-            <form>
+            <form onSubmit={event => props.onSubmit(event, inputsMap)}>
                 {props.inputs.map((input, key) => {
                         let additionalProps = {
                             validationCallback: validationCallback,
