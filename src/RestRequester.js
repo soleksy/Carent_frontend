@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const signInUrl = "http://localhost:8080/test/auth";
+const signInUrl = "https://carentserverside.herokuapp.com/users/auth";
 
 export const signIn = (username, password) => {
     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;

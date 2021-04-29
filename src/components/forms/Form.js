@@ -11,7 +11,7 @@ const Form = (props) => {
             value: "",
             valid: false
         });
-    }, []);
+    }, [props,inputsMap]);
 
     const validationCallback = (name, value, valid) => {
         inputsMap[name] = {

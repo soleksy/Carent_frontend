@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext, useRef} from "react";
+import {useState, useEffect, useContext} from "react";
 import {Context} from "./App";
 
 const Loader = () => {
