@@ -6,7 +6,11 @@ body {
     sans-serif;
 }
 
-.loading {
+.content-body {
+    background-color: aliceblue;
+}
+
+.loading-modal {
     position: absolute;
     display: block;
     z-index: 2;
@@ -18,11 +22,31 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.loading-content {
-    position: absolute;
-    #background-color: white;
-    color: deepskyblue;
+.loading-bar {
+    position: relative;
+    color: dodgerblue;
     font-size: 100px;
-    left: calc(50% - 33px);
-    top: calc(50% - 120px);
+    left: calc(50% - 33.3px);
+}
+
+.error-message {
+    display: block;
+    padding: 5px;
+    color: red;
+    background-color: #ffe5e5;
+    border: 2px solid red;
+    font-size: 13px;
+}
+
+.info-message {
+    display: block;
+    padding: 5px;
+    color: #0088ff;
+    background-color: #e5ecff;
+    border: 2px solid #0088FF;
+    font-size: 13px;
+}
+
+.side-panel {
+
 }

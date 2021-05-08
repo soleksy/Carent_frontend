@@ -65,7 +65,7 @@ li a,button {
     border-top: 2px solid white;
 }
 
-li a,button:hover {
-    color: dodgerblue;
-    border-top: 2px solid dodgerblue;
+li a:hover,button:hover {
+    color: deepskyblue;
+    border-top: 2px solid deepskyblue;
 }

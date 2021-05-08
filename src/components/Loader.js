@@ -1,24 +1,32 @@
-import {useState, useEffect, useContext} from "react";
-import {Context} from "./App";
+import {useEffect, useState} from "react";
 
-const Loader = () => {
-    const [globalState,] = useContext(Context);
+const Loader = (props) => {
     const [state, setState] = useState({
-        loadingBar: "."
+        loadingBar: ".\u00a0\u00a0"
     });
 
     const updateLoadingBar = () => {
         setState(prevState => {
+            let loadingBar = prevState.loadingBar;
+            if (loadingBar[2] === ".") {
+                loadingBar = "\u00a0\u00a0\u00a0";
+            } else if (loadingBar[1] === ".") {
+                loadingBar = "...";
+            } else if (loadingBar[0] === ".") {
+                loadingBar = "..\u00a0";
+            } else {
+                loadingBar = ".\u00a0\u00a0";
+            }
             return {
-                loadingBar: prevState.loadingBar.length > 2 ? "" : prevState.loadingBar + "."
+                loadingBar
             };
         });
     };
 
     useEffect(() => {
         let intervalId = 0;
-        if (globalState.renderLoader) {
-            intervalId = setInterval(updateLoadingBar, 1000);
+        if (props.renderLoader) {
+            intervalId = setInterval(updateLoadingBar, 500);
         }
         return () => {
             clearInterval(intervalId);
@@ -26,20 +34,14 @@ const Loader = () => {
                 loadingBar: "."
             });
         };
-    }, [globalState.renderLoader]);
+    }, [props.renderLoader]);
 
-    const renderLoaderIfNeeded = () => {
-        if (globalState.renderLoader) {
-            return (
-                <div className="loading">
-                    <span className="loading-content">{state.loadingBar}</span>
-                </div>
-            );
-        }
-        return null;
-    };
-
-    return renderLoaderIfNeeded();
+    if (props.renderLoader) {
+        return (
+            <span className="loading-bar">{state.loadingBar}</span>
+        );
+    }
+    return null;
 }
 
 export default Loader;

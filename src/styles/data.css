@@ -1,0 +1,65 @@
+.cars-container {
+    padding: 20px 15px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cars-container h2 {
+    color: dodgerblue;
+    margin: 0 auto 15px auto;
+    text-align: center;
+}
+
+.cars-container > div {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.car {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    min-width: 400px;
+    border: 1px solid dodgerblue;
+}
+
+.car .header {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    color: dodgerblue;
+    border-bottom: 4px solid dodgerblue;
+}
+
+.car .description {
+    display: block;
+    padding: 5px 10px;
+    color: dodgerblue;
+}
+
+.car input {
+    display: block;
+    margin: 5px 0;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    background-color: dodgerblue;
+    width: 100%;
+    border: none;
+}
+
+.car input:hover {
+    background-color: deepskyblue;
+}
+
+.profile-container {
+    padding: 40px 15px;
+}
+
+.profile-container h2 {
+    color: dodgerblue;
+    margin: 0 auto 15px auto;
+    text-align: center;
+}

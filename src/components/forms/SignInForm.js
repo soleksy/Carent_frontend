@@ -31,17 +31,24 @@ const SignInForm = () => {
         dispatch({
             renderLoader: true
         });
-        signIn(inputData["Email"].value, inputData["Password"].value).then(response => {
+        signIn(
+            inputData["Email"].value,
+            inputData["Password"].value
+        ).then(response => {
             const authToken = response.data;
-            const username = jwtDecode(authToken).sub;
-            saveAuthData(username, authToken);
+            const {userId, firstName, lastName} = jwtDecode(authToken);
+            const userName = `${lastName} ${firstName}`
+            saveAuthData(userId, userName, authToken);
             dispatch({
-                username: username,
+                userName,
                 modalContent: null,
                 renderLoader: false
             });
         }).catch(error => dispatch({
-            modalErrorMessage: error.response ? error.response.data.message : error.message,
+            modalMessage: {
+                value: error.response ? error.response.data.message : error.message,
+                type: "error"
+            },
             renderLoader: false
         }));
     };

@@ -1,6 +1,6 @@
 export const Reducer = (state, newState) => {
     if(newState.modalContent !== undefined && newState.modalContent == null) {
-        newState.modalErrorMessage = null;
+        newState.modalMessage = null;
     }
     return {
         ...state,

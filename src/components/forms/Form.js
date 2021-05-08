@@ -11,12 +11,12 @@ const Form = (props) => {
             value: "",
             valid: false
         });
-    }, [props,inputsMap]);
+    }, []);
 
     const validationCallback = (name, value, valid) => {
         inputsMap[name] = {
-            value: value,
-            valid: valid
+            value,
+            valid
         };
         const formValid = !Object.values(inputsMap).some(input => !input.valid);
         setState({
@@ -34,8 +34,8 @@ const Form = (props) => {
             <form onSubmit={event => props.onSubmit(event, inputsMap)}>
                 {props.inputs.map((input, key) => {
                         let additionalProps = {
-                            validationCallback: validationCallback,
-                            key: key,
+                            validationCallback,
+                            key,
                         };
                         if(input.dependsOn !== undefined) {
                             additionalProps["getValueOfDependentInput"] = () => getValueOfDependentInput(input.dependsOn);

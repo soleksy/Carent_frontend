@@ -19,14 +19,6 @@
     background-color: white;
 }
 
-.modal-error {
-    display: block;
-    padding: 10px;
-    color: red;
-    background-color: #ffd1dd;
-    border: 2px solid red;
-}
-
 .modal-close {
     font-size: 40px;
     font-weight: bold;

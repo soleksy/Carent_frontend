@@ -1,17 +1,27 @@
-export const saveAuthData = (username, authToken) => {
-    localStorage.setItem("username", username);
-    localStorage.setItem("authToken", authToken);
+const USER_ID = "userId";
+const USER_NAME = "userName";
+const AUTH_TOKEN = "authToken";
+
+export const saveAuthData = (userId, userName, authToken) => {
+    sessionStorage.setItem(USER_ID, userId);
+    sessionStorage.setItem(USER_NAME, userName);
+    sessionStorage.setItem(AUTH_TOKEN, authToken);
 };
 
-export const getUsername = () => {
-    return localStorage.getItem("username");
+export const getUserId = () => {
+    return sessionStorage.getItem(USER_ID);
+};
+
+export const getUserName = () => {
+    return sessionStorage.getItem(USER_NAME);
 };
 
 export const getAuthToken = () => {
-    return localStorage.getItem("authToken");
+    return sessionStorage.getItem(AUTH_TOKEN);
 };
 
 export const clearAuthData = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("authToken");
+    sessionStorage.removeItem(USER_ID);
+    sessionStorage.removeItem(USER_NAME);
+    sessionStorage.removeItem(AUTH_TOKEN);
 };

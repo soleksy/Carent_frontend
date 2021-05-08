@@ -1,36 +1,22 @@
 import {useContext} from "react";
 import {Context} from "./App";
+import Message from "./Message";
 
-const Modal = (props) => {
+const Modal = () => {
     const [globalState, dispatch] = useContext(Context);
 
-    const renderErrorMessageIfNeeded = () => {
-        if (globalState.modalErrorMessage) {
-            return (
-                <span className="modal-error">
-                    {globalState.modalErrorMessage}
-                </span>
-            );
-        }
-        return null;
-    }
-
-    const renderModalIfNeeded = () => {
-        if (globalState.modalContent) {
-            return (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="modal-close" onClick={() => dispatch({modalContent: null})}>&times;</span>
-                        {globalState.modalContent}
-                        {renderErrorMessageIfNeeded()}
-                    </div>
+    if (globalState.modalContent) {
+        return (
+            <div className="modal">
+                <div className="modal-content">
+                    <span className="modal-close" onClick={() => dispatch({modalContent: null})}>&times;</span>
+                    {globalState.modalContent}
+                    <Message value={globalState.modalMessage?.value} type={globalState.modalMessage?.type}/>
                 </div>
-            );
-        }
-        return null;
+            </div>
+        );
     }
-
-    return renderModalIfNeeded();
+    return null;
 }
 
 export default Modal;

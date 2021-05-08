@@ -2,17 +2,17 @@ import {Fragment, useContext} from "react";
 import {Context} from "./App";
 import SignUpForm from "./forms/SignUpForm";
 import SignInForm from "./forms/SignInForm";
-import {clearAuthData, getUsername} from "../Storage";
+import {clearAuthData, getUserName} from "../Storage";
 
 const Menu = (props) => {
     const [globalState, dispatch] = useContext(Context)
 
     const renderAuthComponents = () => {
-        if (getUsername() || globalState.username) {
+        if (getUserName() || globalState.username) {
             return (
                 <li className="auth">
                     <p>
-                        {getUsername()} [ <button>Profile</button> / <button onClick={() => {
+                        {getUserName()} [ <button onClick={() => window.location.href="/profile"}>Profile</button> / <button onClick={() => {
                             clearAuthData();
                             dispatch({username: null});
                         }}>Sign out</button> ]
@@ -35,7 +35,8 @@ const Menu = (props) => {
 
     return (
         <ul>
-            <li className="selected"><a href="/">Home</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cars">Cars</a></li>
             {renderAuthComponents()}
         </ul>
     );
