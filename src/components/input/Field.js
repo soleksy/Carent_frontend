@@ -2,7 +2,7 @@ import {useState} from "react";
 
 const Field = (props) => {
     const [state, setState] = useState({
-        value: "",
+        value: props.value,
         className: "valid",
         valid: false
     });
@@ -26,11 +26,12 @@ const Field = (props) => {
     };
 
     return (
-        <div className={state.className}>
+        <div className={`input ${state.className}`}>
             <label htmlFor={props.name}>{props.name}:</label>
             <br/>
             <input name={props.name}
                    type={props.type}
+                   disabled={props.disabled ?? false}
                    onChange={valueChangeHandler}
                    value={state.value}/>
             <br/>

@@ -1,6 +1,5 @@
 div.form-container {
     min-width: 350px;
-    background-color: white;
 }
 
 div.form-container .form-header {
@@ -14,6 +13,10 @@ div.form-container .form-header {
 
 div.form-container form {
     padding: 15px 0;
+}
+
+div.form-container input {
+    box-sizing: border-box;
 }
 
 div.form-container form input[type="submit"] {
@@ -30,11 +33,11 @@ div.form-container form input[type="submit"]:hover {
     background-color: deepskyblue;
 }
 
-div.form-container form input[disabled] {
+div.form-container form input[type="submit"][disabled] {
     background-color: #b3b3b3;
 }
 
-div.form-container form input[disabled]:hover {
+div.form-container form input[type="submit"][disabled]:hover {
     cursor: default;
     background-color: #b3b3b3;
 }

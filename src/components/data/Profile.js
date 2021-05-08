@@ -41,7 +41,6 @@ const Profile = () => {
                 validate: dateBeforeCurrentValidator
             }
         ];
-
         return (
             <div className="profile-personal-info">
                 <Form name="Personal info" inputs={inputs}/>
