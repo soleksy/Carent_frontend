@@ -21,7 +21,7 @@ export const signUp = (email, firstName, lastName, birthdate, password, confirmP
     return axios.post(signUpUrl, {
         email,
         firstName,
-        secondName: lastName,
+        lastName,
         dateOfBirth: birthdate,
         password,
         confirmPassword
