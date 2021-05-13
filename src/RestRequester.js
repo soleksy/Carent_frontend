@@ -2,11 +2,11 @@ import axios from "axios";
 import {getAuthToken, getUserId} from "./Storage";
 
 const serverUrl = "http://192.168.0.81:8080";
-const signInUrl = `${serverUrl}/users/auth`;
-const signUpUrl = `${serverUrl}/users/register`;
-const usersUrl = `${serverUrl}/users`;
-const userProfileUrl = `${usersUrl}/self`;
-const carsUrl = `${serverUrl}/car`;
+const signInUrl = `/users/auth`;
+const signUpUrl = `/users/register`;
+const usersUrl = `/users`;
+const userProfileUrl = `/self`;
+const carsUrl = `/car`;
 
 export const signIn = (email, password) => {
     const authHeader = `Basic ${btoa(`${email}:${password}`)}`;
