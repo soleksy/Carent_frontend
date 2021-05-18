@@ -1,11 +1,9 @@
 import axios from "axios";
 import {getAuthToken, getUserId} from "./Storage";
-
-const serverUrl = "http://192.168.0.81:8080";
-const signInUrl = `/users/auth`;
-const signUpUrl = `/users/register`;
-const usersUrl = `/users`;
-const userProfileUrl = `/self`;
+const serverUrl = "https://192.168.0.81:8080";
+const signInUrl = `${serverUrl}/users/auth`;
+const signUpUrl = `${serverUrl}/users/register`;
+const userProfileUrl = `${serverUrl}/self`;
 const carsUrl = `/car`;
 
 export const signIn = (email, password) => {
