@@ -1,10 +1,10 @@
 import axios from "axios";
 import {getAuthToken, getUserId} from "./Storage";
-const serverUrl = "https://192.168.0.81:8080";
+const serverUrl = "https://carentserverside.herokuapp.com";
 const signInUrl = `${serverUrl}/users/auth`;
 const signUpUrl = `${serverUrl}/users/register`;
 const userProfileUrl = `${serverUrl}/self`;
-const carsUrl = `/car`;
+const carsUrl = `${serverUrl}/car`;
 
 export const signIn = (email, password) => {
     const authHeader = `Basic ${btoa(`${email}:${password}`)}`;
@@ -41,5 +41,6 @@ export const getCurrentUserData = () => {
 };
 
 export const getCars = () => {
+    console.log(carsUrl)
     return axios.get(carsUrl, {});
 };
