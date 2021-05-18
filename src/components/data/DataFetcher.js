@@ -25,7 +25,7 @@ const DataFetcher = (props) => {
                 successful: false
             }
         }));
-    }, [fetchConditionCheckerFunc()]);
+    }, [fetchConditionCheckerFunc(), props]);
 
     if(!state.serverResponse) {
         return <Loader renderLoader="true"/>;
