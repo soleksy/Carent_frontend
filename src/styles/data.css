@@ -1,7 +1,7 @@
 .cars-container {
     padding: 20px 15px;
     margin: 0 auto;
-    width: 100%;
+    width: 87%;
     box-sizing: border-box;
 }
 
@@ -13,7 +13,7 @@
 
 .cars-container > div {
     margin: 0 auto;
-    width: fit-content;
+    width: 100%;
 }
 
 .car {
@@ -56,10 +56,18 @@
 
 .profile-container {
     padding: 40px 15px;
+    margin: 0 auto;
+    width: 50%;
 }
 
 .profile-container h2 {
     color: dodgerblue;
     margin: 0 auto 15px auto;
     text-align: center;
+}
+
+.sign-out-container {
+    padding: 40px 15px;
+    width: 50%;
+    margin: 0 auto;
 }

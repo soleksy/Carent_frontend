@@ -1,31 +1,31 @@
 import {useEffect, useState} from "react";
 import Message from "../Message";
 import Loader from "../Loader";
+import {messages} from "../../helpers/Constats";
 
 const DataFetcher = (props) => {
     const [state, setState] = useState({
         serverResponse: null
     });
-    let fetchConditionCheckerFunc = props.fetchConditionCheckerFunc;
-    if(!fetchConditionCheckerFunc) {
-        fetchConditionCheckerFunc = () => 0;
-    }
+    const fetchingFunc = props.fetchingFunc;
     useEffect(() => {
         setState({
             serverResponse: null
         })
-        props.fetchingFunc().then(response => setState({
+        fetchingFunc().then(response => {
+            setState({
             serverResponse: {
                 data: response.data,
                 successful: true
             }
-        })).catch(error => setState({
+        })}).catch(error => {
+            setState({
             serverResponse: {
-                data: error.response ? error.response.data : error.message,
+                data: error.response?.data?.message || error.message || messages.serverError,
                 successful: false
             }
-        }));
-    }, [props]);
+        })});
+    }, [fetchingFunc]);
 
     if(!state.serverResponse) {
         return <Loader renderLoader="true"/>;

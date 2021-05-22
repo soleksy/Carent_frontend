@@ -7,7 +7,7 @@ const Car = (props) => {
             <span className="description">
                 Gearbox: {props.gearbox}<br/>
                 Mileage: {props.mileageInLiter}L<br/>
-                Air conditioning: {props.airConditioning ? "" : "not"} available<br/>
+                Air conditioning: {props.airConditioning ? "\u2713" : "\u2715"}<br/>
                 Amount of doors: {props.amountOfDoors}<br/>
                 Amount of seats: {props.amountOfSeats}<br/>
             </span>

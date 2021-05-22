@@ -19,11 +19,11 @@ const App = () => {
         <Context.Provider value={[state, dispatch]}>
             <Menu/>
             <div className="content-body">
-            <BrowserRouter>
-                <Route exact path="/"><CarsContainer header="Recent cars" limit="3"/></Route>
-                <Route exact path="/cars"><CarsContainer header="All cars"/></Route>
-                <Route path="/profile"><Profile/></Route>
-            </BrowserRouter>
+                <BrowserRouter>
+                    <Route exact path="/"><CarsContainer header="Recent cars" limit="3"/></Route>
+                    <Route exact path="/cars"><CarsContainer header="All cars"/></Route>
+                    <Route path="/profile"><Profile/></Route>
+                </BrowserRouter>
             </div>
             <Modal/>
             <GlobalLoader/>

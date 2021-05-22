@@ -27,6 +27,21 @@ body {
     color: dodgerblue;
     font-size: 100px;
     left: calc(50% - 33.3px);
+    text-align: left;
+}
+
+a.button {
+    display: block;
+    padding: 5px;
+    background: dodgerblue;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+a.button:hover {
+    background: deepskyblue;
 }
 
 .error-message {

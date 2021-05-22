@@ -3,6 +3,7 @@ import {Context} from "./App";
 import SignUpForm from "./forms/SignUpForm";
 import SignInForm from "./forms/SignInForm";
 import {clearAuthData, getUserName} from "../Storage";
+import {signOut} from "../RestRequester";
 
 const Menu = (props) => {
     const [globalState, dispatch] = useContext(Context)
@@ -12,10 +13,26 @@ const Menu = (props) => {
             return (
                 <li className="auth">
                     <p>
-                        {getUserName()} [ <button onClick={() => window.location.href="/profile"}>Profile</button> / <button onClick={() => {
+                        {getUserName()} [ <button
+                        onClick={() => window.location.href = "/profile"}>Profile</button> / <button onClick={() => {
+                        dispatch({
+                            renderLoader: true
+                        });
+                        signOut().then(() => {
                             clearAuthData();
-                            dispatch({username: null});
-                        }}>Sign out</button> ]
+                            dispatch({
+                                username: null,
+                                renderLoader: false
+                            });
+                            window.location.href = "/";
+                        }).catch(error => dispatch({
+                            modalMessage: {
+                                value: error.response ? error.response.data.message : error.message,
+                                successful: false
+                            },
+                            renderLoader: false
+                        }));
+                    }}>Sign out</button> ]
                     </p>
                 </li>
             );

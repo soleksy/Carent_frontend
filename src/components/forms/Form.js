@@ -8,16 +8,22 @@ const Form = (props) => {
     });
     useEffect(() => {
         props.inputs.forEach(input => inputsMap[input.name] = {
-            value: "",
-            valid: false
+            value: input.value || "",
+            valid: input.value != null
         });
-    }, [props.inputs, inputsMap]);
+        validateAllFields();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const validationCallback = (name, value, valid) => {
         inputsMap[name] = {
             value,
             valid
         };
+        validateAllFields();
+    };
+
+    const validateAllFields = () => {
         const formValid = !Object.values(inputsMap).some(input => !input.valid);
         setState({
             valid: formValid
@@ -30,14 +36,14 @@ const Form = (props) => {
 
     return (
         <div className="form-container">
-            <div className="form-header">{props.name}</div>
+            {props.name && <div className="form-header">{props.name}</div>}
             <form onSubmit={event => props.onSubmit(event, inputsMap)}>
                 {props.inputs.map((input, key) => {
                         let additionalProps = {
                             validationCallback,
                             key,
                         };
-                        if(input.dependsOn !== undefined) {
+                        if (input.dependsOn !== undefined) {
                             additionalProps["getValueOfDependentInput"] = () => getValueOfDependentInput(input.dependsOn);
                         }
                         return createElement(

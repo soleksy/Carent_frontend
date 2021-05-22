@@ -11,6 +11,7 @@ import {signUp} from "../../RestRequester";
 import {useContext} from "react";
 import {Context} from "../App";
 import SignInForm from "./SignInForm";
+import {messages} from "../../helpers/Constats";
 
 const SignUpForm = () => {
     const [, dispatch] = useContext(Context);
@@ -77,7 +78,7 @@ const SignUpForm = () => {
             renderLoader: false
         })).catch(error => dispatch({
             modalMessage: {
-                value: error.response ? error.response.data.message : error.message,
+                value: error.response?.data?.message || error.message || messages.serverError,
                 type: "error"
             },
             renderLoader: false

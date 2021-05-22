@@ -26,7 +26,7 @@ const Loader = (props) => {
     useEffect(() => {
         let intervalId = 0;
         if (props.renderLoader) {
-            intervalId = setInterval(updateLoadingBar, 500);
+            intervalId = setInterval(updateLoadingBar, 300);
         }
         return () => {
             clearInterval(intervalId);

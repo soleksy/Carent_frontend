@@ -1,11 +1,17 @@
+import jwtDecode from "jwt-decode";
+import {startTokenExpirationTask} from "./helpers/Common";
+
 const USER_ID = "userId";
 const USER_NAME = "userName";
 const AUTH_TOKEN = "authToken";
 
-export const saveAuthData = (userId, userName, authToken) => {
+export const saveAuthData = (dispatch, authToken) => {
+    const {userId, firstName, lastName, iat, exp} = jwtDecode(authToken);
+    const userName = `${firstName} ${lastName}`;
     sessionStorage.setItem(USER_ID, userId);
     sessionStorage.setItem(USER_NAME, userName);
     sessionStorage.setItem(AUTH_TOKEN, authToken);
+    startTokenExpirationTask(dispatch, iat, exp);
 };
 
 export const getUserId = () => {

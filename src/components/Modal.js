@@ -4,7 +4,6 @@ import Message from "./Message";
 
 const Modal = () => {
     const [globalState, dispatch] = useContext(Context);
-
     if (globalState.modalContent) {
         return (
             <div className="modal">

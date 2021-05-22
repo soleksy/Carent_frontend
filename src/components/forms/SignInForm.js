@@ -2,8 +2,7 @@ import Form from "./Form";
 import Field from "../input/Field";
 import {emailValidator, nonEmptyValidator} from "../../helpers/Validators";
 import {signIn} from "../../RestRequester";
-import jwtDecode from "jwt-decode";
-import {saveAuthData} from "../../Storage";
+import {getUserName, saveAuthData} from "../../Storage";
 import {Context} from "../App";
 import {useContext} from "react";
 
@@ -36,11 +35,9 @@ const SignInForm = () => {
             inputData["Password"].value
         ).then(response => {
             const authToken = response.data;
-            const {userId, firstName, lastName} = jwtDecode(authToken);
-            const userName = `${lastName} ${firstName}`
-            saveAuthData(userId, userName, authToken);
+            saveAuthData(dispatch, authToken);
             dispatch({
-                userName,
+                userName: getUserName(),
                 modalContent: null,
                 renderLoader: false
             });
