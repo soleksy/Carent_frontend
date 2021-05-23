@@ -1,7 +1,7 @@
 import axios from "axios";
 import {getAuthToken, getUserId} from "./Storage";
 
-const serverUrl = "http://192.168.0.81:8080";
+const serverUrl = "https://carentserverside.herokuapp.com";
 const usersUrl = `${serverUrl}/users`;
 const signInUrl = `${usersUrl}/auth`;
 const signUpUrl = `${usersUrl}/register`;

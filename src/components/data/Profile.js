@@ -1,10 +1,9 @@
 import DataFetcher from "./DataFetcher";
-import {editProfile, getCurrentUserData, signIn} from "../../RestRequester";
+import {editProfile, getCurrentUserData} from "../../RestRequester";
 import Field from "../input/Field";
 import {dateBeforeCurrentValidator, emailValidator, nonEmptyValidator} from "../../helpers/Validators";
 import Form from "../forms/Form";
 import {getQueryParam} from "../../helpers/Common";
-import jwtDecode from "jwt-decode";
 import {getUserName, saveAuthData} from "../../Storage";
 import {useContext, useState} from "react";
 import {Context} from "../App";
