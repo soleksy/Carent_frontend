@@ -24,14 +24,13 @@ const Menu = (props) => {
                                 username: null,
                                 renderLoader: false
                             });
-                            window.location.href = "/";
-                        }).catch(error => dispatch({
-                            modalMessage: {
-                                value: error.response ? error.response.data.message : error.message,
-                                successful: false
-                            },
-                            renderLoader: false
-                        }));
+                        }).catch(() => {
+                            clearAuthData();
+                            dispatch({
+                                username: null,
+                                renderLoader: false
+                            });
+                        });
                     }}>Sign out</button> ]
                     </p>
                 </li>

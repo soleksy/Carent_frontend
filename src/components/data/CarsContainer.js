@@ -4,7 +4,8 @@ import Car from "./Car";
 
 const CarsContainer = (props) => {
     const successfulResponseRenderingFunc = (data) => {
-        return data.map((car, index) => <Car brand={car.brand}
+        return data.map((car, index) => <Car id={car.id}
+                                             brand={car.brand}
                                              model={car.model}
                                              gearbox={car.gearbox}
                                              mileageInLiter={car.mileageInLiter}

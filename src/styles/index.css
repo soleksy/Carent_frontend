@@ -32,7 +32,7 @@ body {
 
 a.button {
     display: block;
-    padding: 5px;
+    padding: 3px 5px 5px 5px;
     background: dodgerblue;
     color: white;
     text-decoration: none;
@@ -64,4 +64,23 @@ a.button:hover {
 
 .side-panel {
 
+}
+
+footer {
+    border-top: 2px solid dodgerblue;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+}
+
+footer p {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #f6f7ff;
+    padding-top: 20px;
+    border-bottom: 2px solid dodgerblue;
 }

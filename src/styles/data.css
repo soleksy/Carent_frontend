@@ -1,11 +1,11 @@
 .cars-container {
     padding: 20px 15px;
     margin: 0 auto;
-    width: 87%;
+    width: 88%;
     box-sizing: border-box;
 }
 
-.cars-container h2 {
+h2 {
     color: dodgerblue;
     margin: 0 auto 15px auto;
     text-align: center;

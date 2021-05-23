@@ -52,6 +52,10 @@ export const getCars = () => {
     return axios.get(carsUrl, {});
 };
 
+export const getCar = (id) => {
+    return axios.get(`${carsUrl}/${id}`, {headers: getAuthHeader()});
+};
+
 export const editProfile = (email, firstName, lastName, birthdate) => {
     return axios.put(editProfileUrl, {
         email,
@@ -62,7 +66,10 @@ export const editProfile = (email, firstName, lastName, birthdate) => {
 };
 
 const getAuthHeader = () => {
-    return {
-        "Authorization": `Bearer ${getAuthToken()}`
-    };
+    if(getAuthToken()) {
+        return {
+            "Authorization": `Bearer ${getAuthToken()}`
+        };
+    }
+    return {};
 };

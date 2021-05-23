@@ -1,5 +1,3 @@
-
-
 const Car = (props) => {
     return (
         <div className="car">
@@ -11,7 +9,7 @@ const Car = (props) => {
                 Amount of doors: {props.amountOfDoors}<br/>
                 Amount of seats: {props.amountOfSeats}<br/>
             </span>
-            <input type="button" value={`Order ($${props.pricePerDay})`}/>
+            <a href={`/cars/${props.id}`} className="button">{`Order ($${props.pricePerDay})`}</a>
         </div>
     );
 };
