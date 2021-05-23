@@ -8,7 +8,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Profile from "./data/Profile";
 import CarDetails from "./data/CarDetails";
 import Footer from "./Footer";
-import Header from "./data/Header";
+import Header from "./Header";
 
 const initialState = {
     modalContent: null,
