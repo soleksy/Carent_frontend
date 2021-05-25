@@ -88,3 +88,6 @@ export const addRental = (userId, carId, startDate, endDate) => {
     }, {headers: getAuthHeader()});
 }
 
+export const deleteRental = (id) => {
+    return axios.delete(`${rentalURL}/${id}`, {headers: getAuthHeader()});
+}

@@ -9,6 +9,7 @@ import Profile from "./data/Profile";
 import CarDetails from "./data/CarDetails";
 import Footer from "./Footer";
 import Header from "./Header";
+import RentalContainer from "./data/RentalContainer";
 
 const initialState = {
     modalContent: null,
@@ -36,6 +37,7 @@ const App = () => {
                     <Route path="/profile">
                         <Profile/>
                     </Route>
+                    <Route path="/admin"><RentalContainer/></Route>
                 </BrowserRouter>
             </div>
             <Modal/>
