@@ -9,6 +9,7 @@ const userProfileUrl = `${usersUrl}/self`;
 const editProfileUrl = `${userProfileUrl}/modify`;
 const signOutUrl = `${userProfileUrl}/logout`;
 const carsUrl = `${serverUrl}/car`;
+const rentalURL = `${serverUrl}/rental`;
 
 export const signIn = (email, password) => {
     const authHeader = `Basic ${btoa(`${email}:${password}`)}`;
@@ -73,3 +74,17 @@ const getAuthHeader = () => {
     }
     return {};
 };
+
+export const getRentals = () => {
+    return axios.get(rentalURL, {headers: getAuthHeader()});
+}
+
+export const addRental = (userId, carId, startDate, endDate) => {
+    return axios.post(rentalURL, {
+        userId,
+        carId,
+        startDate,
+        endDate
+    }, {headers: getAuthHeader()});
+}
+
