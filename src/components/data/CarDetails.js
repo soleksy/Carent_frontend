@@ -7,7 +7,7 @@ import RentalForm from "../forms/RentalForm";
 
 const CarDetails = () => {
     const params = useParams();
-    const doRenderCar = useRef(() => getCar(params.id));
+    const doGetCar = useRef(() => getCar(params.id));
     const [, dispatch] = useContext(Context);
 
     const successfulResponseRenderingFunc = (data) => {
@@ -33,7 +33,7 @@ const CarDetails = () => {
         <div className="profile-container">
             <h2>Cars</h2>
             <div>
-                <DataFetcher fetchingFunc={doRenderCar.current}
+                <DataFetcher fetchingFunc={doGetCar.current}
                              successfulResponseRenderingFunc={successfulResponseRenderingFunc}/>
             </div>
         </div>

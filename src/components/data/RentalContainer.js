@@ -1,9 +1,11 @@
 import DataFetcher from "./DataFetcher";
-import {getRentals} from "../../RestRequester"
+import {getUserRentals} from "../../RestRequester"
 import Rental from "./Rental";
-import {useState} from "react";
+import {useRef, useState} from "react";
+import {getUserId} from "../../Storage";
 
 const RentalContainer = () => {
+    const doGetUserRentals = useRef(() => getUserRentals(getUserId()));
     const [state, setState] = useState(0);
     const successfulResponseRenderingFunc = (data) => {
         return data.map((rental, index) => <Rental id={rental.id}
@@ -20,12 +22,12 @@ const RentalContainer = () => {
         <div className="cars-container">
             <h2>My orders</h2>
             <div>
-                <DataFetcher fetchingFunc={getRentals}
+                <DataFetcher fetchingFunc={doGetUserRentals.current}
                              successfulResponseRenderingFunc={successfulResponseRenderingFunc}
                              rerenderCondition={state}/>
             </div>
         </div>
-    )
+    );
 }
 
 export default RentalContainer;

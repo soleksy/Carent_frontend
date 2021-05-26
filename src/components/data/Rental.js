@@ -2,6 +2,7 @@ import {deleteRental} from "../../RestRequester";
 import {Context} from "../App";
 import {useContext} from "react";
 import {getDifferenceInDays} from "../../helpers/Common";
+import {messages} from "../../helpers/Constats";
 
 const Rental = (props) => {
     const [, dispatch] = useContext(Context);
@@ -18,7 +19,7 @@ const Rental = (props) => {
             props.rerenderCallback();
         }).catch(error => dispatch({
             modalMessage: {
-                value: error.response ? error.response.data.message : error.message,
+                value: error.response?.data?.message || error.message || messages.serverError,
                 type: "error"
             },
             renderLoader: false
@@ -30,7 +31,6 @@ const Rental = (props) => {
         <div className="car">
             <span className="description">
                 Id: {props.id}<br/>
-                User: {props.user.firstName} {props.user.lastName}<br/>
                 Car: {props.car.brand} {props.car.model} (${props.car.pricePerDay} per day)<br/>
                 Start date: {startDate.toDateString()}<br/>
                 End date: {endDate.toDateString()}<br/>

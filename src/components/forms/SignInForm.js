@@ -5,6 +5,7 @@ import {signIn} from "../../RestRequester";
 import {getUserName, saveAuthData} from "../../Storage";
 import {Context} from "../App";
 import {useContext} from "react";
+import {messages} from "../../helpers/Constats";
 
 const SignInForm = () => {
     const [, dispatch] = useContext(Context);
@@ -43,7 +44,7 @@ const SignInForm = () => {
             });
         }).catch(error => dispatch({
             modalMessage: {
-                value: error.response ? error.response.data.message : error.message,
+                value: error.response?.data?.message || error.message || messages.serverError,
                 type: "error"
             },
             renderLoader: false

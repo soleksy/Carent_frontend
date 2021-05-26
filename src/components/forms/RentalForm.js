@@ -1,10 +1,11 @@
 import Field from "../input/Field";
-import {dateBeforeCurrentValidator, dateTimeAfterValidator, dateTimeBeforeValidator} from "../../helpers/Validators";
+import {dateTimeAfterValidator, dateTimeBeforeValidator} from "../../helpers/Validators";
 import {addRental} from "../../RestRequester";
 import {getUserId} from "../../Storage";
 import Form from "./Form";
 import {Context} from "../App";
 import {useContext} from "react";
+import {messages} from "../../helpers/Constats";
 
 const RentalForm = (props) => {
     const [, dispatch] = useContext(Context);
@@ -42,7 +43,7 @@ const RentalForm = (props) => {
             });
         }).catch(error => dispatch({
             modalMessage: {
-                value: error.response ? error.response.data.message : error.message,
+                value: error.response?.data?.message || error.message || messages.serverError,
                 type: "error"
             },
             renderLoader: false
