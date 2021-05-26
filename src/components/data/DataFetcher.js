@@ -2,12 +2,15 @@ import {useEffect, useState} from "react";
 import Message from "../Message";
 import Loader from "../Loader";
 import {messages} from "../../helpers/Constats";
+import {getUserId} from "../../Storage";
 
 const DataFetcher = (props) => {
     const [state, setState] = useState({
         serverResponse: null
     });
     const fetchingFunc = props.fetchingFunc;
+    const rerenderCondition = props.rerenderCondition;
+    const userId = getUserId();
     useEffect(() => {
         setState({
             serverResponse: null
@@ -25,7 +28,7 @@ const DataFetcher = (props) => {
                 successful: false
             }
         })});
-    }, [fetchingFunc]);
+    }, [rerenderCondition, userId, fetchingFunc]);
 
     if(!state.serverResponse) {
         return <Loader renderLoader="true"/>;

@@ -1,7 +1,7 @@
 const Car = (props) => {
     return (
         <div className="car">
-            <span className="header">{props.brand} {props.model}</span>
+            <span className="header">{props.brand} {props.model} (${props.pricePerDay})</span>
             <span className="description">
                 Gearbox: {props.gearbox}<br/>
                 Mileage: {props.mileageInLiter}L<br/>
@@ -9,7 +9,7 @@ const Car = (props) => {
                 Amount of doors: {props.amountOfDoors}<br/>
                 Amount of seats: {props.amountOfSeats}<br/>
             </span>
-            <a href={`/cars/${props.id}`} className="button">{`Order ($${props.pricePerDay})`}</a>
+            <a href={`/cars/${props.id}`} className="button">Details</a>
         </div>
     );
 };

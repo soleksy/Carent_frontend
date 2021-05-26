@@ -30,8 +30,8 @@ const Form = (props) => {
         });
     };
 
-    const getValueOfDependentInput = (dependentName) => {
-        return inputsMap[dependentName].value;
+    const getValueOfField = (fieldName) => {
+        return inputsMap[fieldName]?.value;
     };
 
     return (
@@ -41,10 +41,10 @@ const Form = (props) => {
                 {props.inputs.map((input, key) => {
                         let additionalProps = {
                             validationCallback,
-                            key,
+                            key
                         };
                         if (input.dependsOn !== undefined) {
-                            additionalProps["getValueOfDependentInput"] = () => getValueOfDependentInput(input.dependsOn);
+                            additionalProps["valueOfBoundField"] = getValueOfField(input.dependsOn);
                         }
                         return createElement(
                             input.component,

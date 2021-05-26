@@ -13,8 +13,9 @@ const Menu = (props) => {
             return (
                 <li className="auth">
                     <p>
-                        {getUserName()} [ <button
-                        onClick={() => window.location.href = "/profile"}>Profile</button> / <button onClick={() => {
+                        {getUserName()} [ <button onClick={() => window.location.href = "/profile"}>Me</button> / <button
+                        onClick={() => window.location.href = "/orders"}>My orders</button> / <button
+                        onClick={() => {
                         dispatch({
                             renderLoader: true
                         });

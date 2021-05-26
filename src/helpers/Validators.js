@@ -2,10 +2,30 @@ const EMAIL_REGEX = /^\w+(\.\w+)*@(\w+\.)*\w+$/;
 
 export const dateBeforeCurrentValidator = (input) => {
     let errorMessage = null;
-    const currentDate = new Date();
-    const providedDate = new Date(Date.parse(input))
+    const currentDate = Date.now();
+    const providedDate = Date.parse(input);
     if(providedDate > currentDate) {
         errorMessage = "Birthdate cannot be ahead of current date";
+    }
+    return createValidationResult(errorMessage);
+}
+
+export const dateTimeBeforeValidator = (input, comparable) => {
+    let errorMessage = null;
+    comparable = new Date(comparable);
+    const providedDate = Date.parse(input);
+    if(providedDate <= comparable) {
+        errorMessage = "Car can be ordered for at least 1 day";
+    }
+    return createValidationResult(errorMessage);
+}
+
+export const dateTimeAfterValidator = (input) => {
+    let errorMessage = null;
+    const currentDate = new Date();
+    const providedDate = new Date(Date.parse(input))
+    if(providedDate < currentDate) {
+        errorMessage = "Cannot be same as or behind current date";
     }
     return createValidationResult(errorMessage);
 }

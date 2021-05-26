@@ -10,6 +10,7 @@ import CarDetails from "./data/CarDetails";
 import Footer from "./Footer";
 import Header from "./Header";
 import RentalContainer from "./data/RentalContainer";
+import {startTokenExpirationTask} from "../helpers/Common";
 
 const initialState = {
     modalContent: null,
@@ -19,6 +20,7 @@ const initialState = {
 
 const App = () => {
     const [state, dispatch] = useReducer(Reducer, initialState);
+    startTokenExpirationTask(dispatch);
     return (
         <Context.Provider value={[state, dispatch]}>
             <Menu/>
@@ -37,7 +39,9 @@ const App = () => {
                     <Route path="/profile">
                         <Profile/>
                     </Route>
-                    <Route path="/admin"><RentalContainer/></Route>
+                    <Route path="/orders">
+                        <RentalContainer/>
+                    </Route>
                 </BrowserRouter>
             </div>
             <Modal/>

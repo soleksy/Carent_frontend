@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const Field = (props) => {
     const [state, setState] = useState({
@@ -7,11 +7,23 @@ const Field = (props) => {
         valid: false
     });
 
+    const valueOfBoundField = props.valueOfBoundField;
+    useEffect(() => {
+        if(valueOfBoundField && state.value) {
+            validate(state.value)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [valueOfBoundField]);
+
     const valueChangeHandler = (event) => {
         const inputValue = event.target.value;
+        validate(inputValue);
+    };
+
+    const validate = (inputValue) => {
         let validationResult;
-        if (props.getValueOfDependentInput !== undefined) {
-            validationResult = props.validate(inputValue, props.getValueOfDependentInput());
+        if (props.valueOfBoundField) {
+            validationResult = props.validate(inputValue, props.valueOfBoundField);
         } else {
             validationResult = props.validate(inputValue);
         }
@@ -20,7 +32,7 @@ const Field = (props) => {
             className: validationResult.valid ? "valid" : "invalid",
             errorMessage: validationResult.errorMessage
         });
-        if (props.validationCallback !== undefined) {
+        if (props.validationCallback) {
             props.validationCallback(props.name, inputValue, validationResult.valid);
         }
     };
