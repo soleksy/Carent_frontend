@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import RentalContainer from "./data/RentalContainer";
 import {startTokenExpirationTask} from "../helpers/Common";
+import AdminPanel from "./data/AdminPanel";
 
 const initialState = {
     modalContent: null,
@@ -41,6 +42,9 @@ const App = () => {
                     </Route>
                     <Route path="/orders">
                         <RentalContainer/>
+                    </Route>
+                    <Route path="/admin">
+                        <AdminPanel />
                     </Route>
                 </BrowserRouter>
             </div>

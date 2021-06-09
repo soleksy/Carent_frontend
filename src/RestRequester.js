@@ -93,6 +93,15 @@ export const addRental = (userId, carId, startDate, endDate) => {
     }, {headers: getAuthHeader()});
 };
 
+export const editRental = (orderId, userId, carId, startDate, endDate) => {
+    return axios.put(`${rentalsUrl}/${orderId}`, {
+        userId,
+        carId,
+        startDate,
+        endDate
+    }, {headers: getAuthHeader()});
+}
+
 export const deleteRental = (id) => {
     return axios.delete(`${rentalsUrl}/${id}`, {headers: getAuthHeader()});
 };
