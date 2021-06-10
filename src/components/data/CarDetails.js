@@ -4,6 +4,7 @@ import {getCar} from "../../RestRequester";
 import {useParams} from "react-router-dom";
 import {Context} from "../App";
 import RentalForm from "../forms/RentalForm";
+import {getUserId} from "../../Storage";
 
 const CarDetails = () => {
     const params = useParams();
@@ -11,6 +12,13 @@ const CarDetails = () => {
     const [, dispatch] = useContext(Context);
 
     const successfulResponseRenderingFunc = (data) => {
+        const getContent = () => {
+            if(getUserId()) {
+                return <RentalForm car={data}/>;
+            }
+            return <span>Please, sign in first</span>
+        }
+
         return (
             <Fragment>
                 <h2 style={{textAlign: "left"}}>{data.brand} {data.model}</h2>
@@ -24,7 +32,7 @@ const CarDetails = () => {
                 <hr/>
                 <input type="submit"
                        value={`Order ($${data.pricePerDay})`}
-                       onClick={() => dispatch({modalContent: <RentalForm car={data}/>})}/>
+                       onClick={() => dispatch({modalContent: getContent()})}/>
             </Fragment>
         );
     };
